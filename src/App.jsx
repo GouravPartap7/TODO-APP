@@ -15,28 +15,36 @@ function App() {
     name: "  Rajput worldwide",
     duedate: "7/7/2027",
 
-
   },
   ];
   const [todoitems, settodoitems] = useState(initialtodoitems)
-  function handlem(itemname, itemdate) {
-    console.log("item name  ${ itemname} item date ${ iteamdate}")
+
+  function handleNewITEM(itemname, itemdate) {
+    console.log(itemname, itemdate)
+
+    const newiteams = [
+       ...todoitems,
+
+      {
+        name:   itemname  ,
+        duedate: itemdate,
+    
+      },
+    ]
+    settodoitems(newiteams)
 
   }
-
-
-
 
   return (
     <>
       <Container>
         <center class=' todo container'>
           <Todoname></Todoname>
-          <Addtodo></Addtodo>
+          <Addtodo onNewItem={handleNewITEM}></Addtodo>
           <Todoitems todoitems={todoitems}></Todoitems>
         </center>
 
-      </Container>
+      </Container >
     </>
   );
 }
